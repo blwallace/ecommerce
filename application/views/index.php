@@ -1,6 +1,6 @@
 <html>
 <head>
-	<title> E-Commerce </title>
+	<title> E-Commerce Brian </title>
 	 <link rel="stylesheet" href="/assets/css/normalize.css">
      <link rel="stylesheet" href="/assets/css/skeleton.css">
      <style type="text/css">
