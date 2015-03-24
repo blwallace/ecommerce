@@ -98,14 +98,15 @@
 			<div class="description">
 			<?= $product['description']; ?>
 			</div>
-			<div class="buy">
-				<select>
-					<option>1 (<?= $product['price'] ?>)</option>
-					<option>2 (<?= $product['price']*2 ?>)</option>
-					<option>3 (<?= $product['price']*3  ?>)</option>
+			<form class="buy" action="/carts/add_item/">
+				<select name="quantity" >
+					<option value="1">1 (<?= $product['price'] ?>)</option>
+					<option value="2">2 (<?= $product['price']*2 ?>)</option>
+					<option value="3">3 (<?= $product['price']*3  ?>)</option>
 				</select>
-				<a href=""><button class="button-primary"> Buy </button></a>
-			</div>
+				<input type="hidden" name="id" value="<?= $product['id'] ?>">
+				<input type="submit" value="Buy">
+			</form>
 		</div>
 	</div>	
 		<div class="row">
