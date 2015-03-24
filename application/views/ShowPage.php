@@ -98,8 +98,13 @@
 			<div class="description">
 			<?= $product['description']; ?>
 			</div>
+<<<<<<< HEAD
 			<form class="buy" action="/carts/add_item/" method='post'>
 				<select name="quantity" >
+=======
+			<form class="buy" action="/carts/add_item/" method="post">
+				<select name="quantity">
+>>>>>>> e7d103134728e42884de9295b16149b71773b43b
 					<option value="1">1 (<?= $product['price'] ?>)</option>
 					<option value="2">2 (<?= $product['price']*2 ?>)</option>
 					<option value="3">3 (<?= $product['price']*3  ?>)</option>
