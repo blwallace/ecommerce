@@ -48,40 +48,6 @@
 
 <div class="container">
 
-			<div class="row">  <!-- This is a temporary section that allows us to initially add items to our cart -->
-				<div class="eleven columns" id="silver">
-					<table class="tweleve columns" id="cart">
-						<thead>
-							<tr>
-								<td>Item</td>
-								<td>Price</td>
-								<td>Quantity</td>
-								<td>Description</td>
-							</tr>
-						</thead>
-						<tbody>
-		<?php 			foreach($products as $item) 
-							{?>					
-							<tr>
-								<td><?= $item['name']?></td>
-								<td>$<?= $item['price']?></td>
-								<td>   
-									<form action='carts/add_item' method='post'>
-									<input type='number' name='quantity' class ='quant-checkout'> 
-									<input type='submit' value='Modify'>
-									<input type='hidden' name='id' value='<?= $item['id']?>'>
-									</form>
-								</td>
-								<td> <?= $item['description']?> </td>
-							</tr>
-		<?php 
-							}?>
-						</tbody>
-					</table>
-
-				</div>
-			</div>
-
 
 	<div class="row">  <!-- This is where we modify items to add to the cart -->
 		<div class="eleven columns" id="silver">
