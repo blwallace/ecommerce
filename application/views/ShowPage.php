@@ -98,7 +98,7 @@
 			<div class="description">
 			<?= $product['description']; ?>
 			</div>
-			<form class="buy" action="/carts/add_item/">
+			<form class="buy" action="/carts/add_item/" method='post'>
 				<select name="quantity" >
 					<option value="1">1 (<?= $product['price'] ?>)</option>
 					<option value="2">2 (<?= $product['price']*2 ?>)</option>

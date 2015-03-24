@@ -12,7 +12,6 @@ class Carts extends CI_Controller {
 	public function add_item()  //This function is temporary to allow us to initially add items to our cart. We'll need to combine it with the functionality in the product dashboard
 	{
 		$form = $this->input->post(null,TRUE);
-
 		if($form['quantity'] == '')
 		{
 			redirect('/carts');
