@@ -16,14 +16,16 @@
     }
     #red {
     	background-color: maroon;
+    	position: relative;
     }
     #gold {
     	background-color: gold;
     }
     #silver {
     	background-color: silver;
-    	height: 300px;
+    	height: 600px;
     	box-shadow: 5px 5px 3px grey;
+    	overflow: auto;
     }
     #move-right {
     	float: right;
@@ -92,7 +94,7 @@
 
 	
 <div class="row">
-	<div class="five columns">
+	<div class="five columns" >
 		<h5>Shipping Information </h5>
 		<form action="/carts/pay" method="post"> 
 			<label>First Name:</label>
