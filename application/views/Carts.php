@@ -31,6 +31,10 @@
     #cart {
     	background-color: lightgrey;
     }
+    .quant-checkout
+    {
+    	width:60px;
+    }
     </style>
 
 </head>
@@ -43,7 +47,43 @@
 	</div>
 
 <div class="container">
-	<div class="row">
+
+			<div class="row">  <!-- This is a temporary section that allows us to initially add items to our cart -->
+				<div class="eleven columns" id="silver">
+					<table class="tweleve columns" id="cart">
+						<thead>
+							<tr>
+								<td>Item</td>
+								<td>Price</td>
+								<td>Quantity</td>
+								<td>Description</td>
+							</tr>
+						</thead>
+						<tbody>
+		<?php 			foreach($products as $item) 
+							{?>					
+							<tr>
+								<td><?= $item['name']?></td>
+								<td>$<?= $item['price']?></td>
+								<td>   
+									<form action='carts/add_item' method='post'>
+									<input type='number' name='quantity' class ='quant-checkout'> 
+									<input type='submit' value='Modify'>
+									<input type='hidden' name='id' value='<?= $item['id']?>'>
+									</form>
+								</td>
+								<td> <?= $item['description']?> </td>
+							</tr>
+		<?php 
+							}?>
+						</tbody>
+					</table>
+
+				</div>
+			</div>
+
+
+	<div class="row">  <!-- This is where we modify items to add to the cart -->
 		<div class="eleven columns" id="silver">
 			<table class="tweleve columns" id="cart">
 				<thead>
@@ -51,71 +91,77 @@
 						<td>Item</td>
 						<td>Price</td>
 						<td>Quantity</td>
+						<td>Description</td>
 						<td>Total</td>
 					</tr>
 				</thead>
 				<tbody>
+<?php 			foreach($cart as $item) 
+					{?>					
 					<tr>
-						<td>Product 1</td>
-						<td>$19.99</td>
-						<td> 1 | <a href=""> update </a></td>
-						<td> $19.99 </td>
+						<td><?= $item['name']?></td>
+						<td>$<?= $item['price']?></td>
+						<td>   
+							<form action='carts/modify' method='post'>
+							<input type='number' name='quantity' value='<?= $item['quantity']?>' class ='quant-checkout'> 
+							<input type='submit' value='Modify'>
+							<input type='hidden' name='id' value='<?= $item['id']?>'>
+							</form>
+						</td>
+						<td> <?= $item['description']?> </td>
+						<td>$<?php echo $item['price']*$item['quantity']; ?></td>
 					</tr>
-					<tr>
-						<td>Product 2</td>
-						<td>$15.99</td>
-						<td> 2 | <a href=""> update </a></td>
-						<td> $29.98 </td>
-					</tr>
+<?php 
+					}?>
 				</tbody>
 			</table>
-		</div>
-	</div>
-	<br>
-	<div class="row" id="move-right">
-		<p>Total: TOTAL HERE !</p>
+				<div class="row" id="move-right">
+		<h5>Total: $<?= $total ?> </h5>
 		<button class="button-primary"> Contiune Shopping </button>
 	</div>
+		</div>
+
+	</div>
+	<br>
+
 	
 <div class="row">
 	<div class="five columns">
-		<h2>Shipping Information </h2>
-		<form action="" method="post"> 
+		<h5>Shipping Information </h5>
+		<form action="/carts/pay" method="post"> 
 			<label>First Name:</label>
-			<input class="tweleve columns" type="text" name="first_name">
+			<input class="tweleve columns" type="text" name="shipping_first_name">
 			<label>Last Name:</label>
-			<input class="tweleve columns" type="text" name="last_name">
+			<input class="tweleve columns" type="text" name="shipping_last_name">
 			<label>Address:</label>
-			<input class="tweleve columns" type="text" name="address">
+			<input class="tweleve columns" type="text" name="shipping_address">
 			<label>Address 2:</label>
-			<input class="tweleve columns" type="text" name="address2">
+			<input class="tweleve columns" type="text" name="shipping_address2">
 			<label>City:</label>
-			<input class="tweleve columns" type="text" name="city">
+			<input class="tweleve columns" type="text" name="shipping_city">
 			<label>State:</label>
-			<input class="tweleve columns" type="text" name="state">
+			<input class="tweleve columns" type="text" name="shipping_state">
 			<label>Zipcode:</label>
-			<input class="tweleve columns" type="text" name="zip">
-		</form>
+			<input class="tweleve columns" type="text" name="shipping_zip">
 	</div>
 </div>
 <div class="row">
 	<div class="five columns">
 		<h2>Billing Information </h2>
-		<form action="" method="post"> 
 			<label>First Name:</label>
-			<input class="tweleve columns" type="text" name="first_name">
+			<input class="tweleve columns" type="text" name="billing_first_name">
 			<label>Last Name:</label>
-			<input class="tweleve columns" type="text" name="last_name">
+			<input class="tweleve columns" type="text" name="billing_last_name">
 			<label>Address:</label>
-			<input class="tweleve columns" type="text" name="address">
+			<input class="tweleve columns" type="text" name="billing_address">
 			<label>Address 2:</label>
-			<input class="tweleve columns" type="text" name="address2">
+			<input class="tweleve columns" type="text" name="billing_address2">
 			<label>City:</label>
-			<input class="tweleve columns" type="text" name="city">
+			<input class="tweleve columns" type="text" name="billing_city">
 			<label>State:</label>
-			<input class="tweleve columns" type="text" name="state">
+			<input class="tweleve columns" type="text" name="billing_state">
 			<label>Zipcode:</label>
-			<input class="tweleve columns" type="text" name="zip">
+			<input class="tweleve columns" type="text" name="billing_zip">
 
 			<label>Card:</label>
 			<input class="ten columns"type="text" name="card">
