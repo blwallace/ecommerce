@@ -1,4 +1,11 @@
+<?php 
+	foreach ($orders as $order) {
+			// echo date_format($order['updated_at'], 'Y/m/d');
 
+	}
+
+
+ ?>
 <html>
 <head>
 	<title>Dashboard Orders</title>
@@ -64,19 +71,20 @@
 		<h2> Dojo E-Commerce </h2>
 		<h5> Orders </h5>
 		<a href="/main/products/"><h6 > Products </h6></a>
-		<a href="/main/index/"><h4> Log Off </h4></a>
+		<a href="/main/home/"><h4> Log Off </h4></a>
 	</div>
 
 <div class="container">
 
 	<div class="row">
-		<input class="search" type="text" name="search" placeholder="search">
-		<select class="show-all" value="Show All">
-			<option>Show All</option>
-			<option>Order in</option>
-			<option>process</option>
-			<option>Shipped</option>
-		</select>
+		<form action="" method="post">
+			<input class="search" type="text" name="search" placeholder="search">
+			<select class="show-all" name="status" value="Show All">
+				<option value="show">Show All</option>
+				<option value="process">Order in process</option>
+				<option value="shipped">Shipped</option>
+			</select>
+		</form>
 	</div>
 
 
@@ -99,14 +107,14 @@
 				<tr>
 					<td><a href="/main/show_orders/<?= $order['id'] ?>"> <?= $order['id'] ?></a></td>
 					<td><?= $order['shipping_first_name'] ?></td>
-					<td><?= $order['updated_at'] ?></td>
+					<td><?php $date=date_create($order['updated_at']); echo date_format($date, 'm/d/Y'); ?></td>
 					<td><?= $order['billing_address'] ?></td>
 					<td>
 						<!-- total -->
 						<?php
 						foreach ($total as $num) {
 							if($order['id'] == $num['order_id']){
-								echo $num['totalAmt'];
+								echo number_format((float)$num['totalAmt'],2,'.','');
 							}
 						}
 						?>

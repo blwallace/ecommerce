@@ -110,7 +110,6 @@
 
 	<div class="header" id="header">
 		<h2> Dojo E-Commerce </h2>
-
 		<h4> Shopping cart (xxx) </h4>
 	</div>
 
@@ -152,7 +151,6 @@
 						}
 					}
 					echo '<li> Lacrosse ('.$sum.')</li>';	
-
 				?>
 			</ul>
 		</div>
@@ -185,26 +183,10 @@
 				?>
 						<div class="row" id="outside">
 							<ul class="numList">
-<?php 	
-								$ticker = 0;
-								$temp = $total;
-
-								while($temp > 0 && $ticker < 10 && $total > 11)
-									{echo '<a class="text" href="/main/index/' . ($ticker * 12 ) .'"><li> '.($ticker+1).'</li></a>';
-										$temp-=12;
-										$ticker++;}
-								if($ticker > 10)
-									{echo '<a class="text" href="/main/index/' . ($total- 12) .'"><li> Last</li></a>';	}
-								 ?>								
-
-							</ul>
+				<?php } ?>
 						</div>
 				</div>
 		</div>
-	</div>
-</div>
-
-
 
 
 

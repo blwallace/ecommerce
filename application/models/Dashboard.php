@@ -16,6 +16,7 @@ class Dashboard extends CI_Model {
 				FROM order_items,orders,products 
 				WHERE order_items.product_id = products.id
 				AND order_items.order_id = orders.id
+				AND products.deleted_at IS NULL
 				GROUP BY order_items.order_id";
 		return $this->db->query($query)->result_array();
 	}
@@ -25,6 +26,7 @@ class Dashboard extends CI_Model {
 				FROM order_items,orders,products 
 				WHERE order_items.product_id = products.id
 				AND order_items.order_id = orders.id
+				AND products.deleted_at IS NULL
 				GROUP BY order_items.order_id, products.name";
 		return $this->db->query($query)->result_array();
 	}
@@ -34,6 +36,7 @@ class Dashboard extends CI_Model {
 					FROM products, orders, order_items
 					WHERE products.id = order_items.product_id
 					AND order_items.order_id = orders.id
+					AND products.deleted_at IS NULL
 					GROUP BY products.id";
 
 		return $this->db->query($query)->result_array();

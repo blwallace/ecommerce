@@ -43,15 +43,15 @@
 	</div>
 		<div class="row">
 			<div class="six columns" id="move-right">
-				<form action="" method="post">
+				<form action="/main/update/<?= $product['id'] ?>" method="post">
 					<label>Name:</label>
 					<input class="twelve column" type="text" name="name" placeholder="<?= $product['name'] ?>">
 					<label>Description:</label>
-					<textarea class="twelve column" name="textarea" placeholder="<?= $product['description'] ?>"></textarea>
+					<textarea class="twelve column" name="description" placeholder="<?= $product['description'] ?>"></textarea>
 					<label>Categories</label>
-					<select>
-						<option>Golf</option>
-						<option>Lacrosse</option>
+					<select name="productscol">
+						<option value="1">Golf</option>
+						<option value="2">Lacrosse</option>
 					</select>
 					<label>Add a New Category</label>
 					<input class="twelve column" type="text" name="new_label" placeholder="new category here.."><br>

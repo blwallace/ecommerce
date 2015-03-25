@@ -67,7 +67,7 @@
 		<h2> Dojo E-Commerce </h2>
 		<a href="/main/orders/"><h5> Orders </h5></a>
 		<h6> Products </h6>
-		<a href="/main/index/"><h4> Log Off </h4></a>
+		<a href="/main/home/"><h4> Log Off </h4></a>
 	</div>
 
 <div class="container">
@@ -99,7 +99,7 @@
 					<td><?= $product['name'] ?></td>
 					<td><?= $product['inv_count'] ?></td>
 					<td><?= $product['quantity'] ?></td>
-					<td><a href="/main/edit_product/<?= $product['id'] ?>">edit</a> | <a href="">delete</a></td>
+					<td><a href="/main/edit_product/<?= $product['id'] ?>">edit</a> | <a href="/main/delete/<?= $product['id'] ?>">delete</a></td>
 				</tr>
 				<?php } ?>
 			</tbody>

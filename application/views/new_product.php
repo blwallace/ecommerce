@@ -1,6 +1,6 @@
 <html>
 <head>
-	<title>Edit Product</title>
+	<title>Add New Product</title>
 	 <link rel="stylesheet" href="/assets/css/normalize.css">
      <link rel="stylesheet" href="/assets/css/skeleton.css">
      <style type="text/css">
@@ -40,21 +40,21 @@
 	</div>
 		<div class="row">
 			<div class="six columns" id="move-right">
-				<form action="" method="post">
+				<form action="/main/add" method="post">
 					<label>Name:</label>
 					<input class="twelve column" type="text" name="name" placeholder="product name..">
 					<label>Description:</label>
-					<textarea class="twelve column" name="textarea" placeholder="product description.."></textarea>
+					<textarea class="twelve column" name="description" placeholder="product description.."></textarea>
 					<label>Categories</label>
-					<select>
-						<option>Golf</option>
-						<option>Lacrosse</option>
+					<select name="productscol">
+						<option value="1">Golf</option>
+						<option value="2">Lacrosse</option>
 					</select>
 					<label>Add a New Category</label>
 					<input class="twelve column" type="text" name="new_label" placeholder="new category here.."><br>
 					<label>Choose an Image</label>
 					<input class="twelve column" type="file" name="image"><br><br>
-					<input class="button-primary" id="move-right2" type="submit" value="update">
+					<input class="button-primary" id="move-right2" type="submit" value="create">
 				</form>	
 				<div id="move-up">
 					<a href="/main/products/"><button class="red"> Cancel </button></a>

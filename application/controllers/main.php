@@ -9,7 +9,10 @@ class Main extends CI_Controller {
 		$this->load->model('Product');
 		$this->load->model('Dashboard');
 	}
-
+	public function home()
+	{
+		redirect('/');
+	}
 	public function index($start)
 	{
 
@@ -130,7 +133,35 @@ class Main extends CI_Controller {
 	{
 		$this->load->view('new_product');
 	}
+	public function add() 
+	{
+		$form = $this->input->post(null,true);
+		$this->Product->add_product($form);
+		redirect('/main/products/');
+		// $this->load->view('products');
+	}
+	public function update($id)
+	{
+		$product = $this->input->post(null,true);
+		$this->Product->update($id,$product);
+		redirect('/main/products/');
+	}
+	public function delete($id)
+	{
+		$this->Product->delete($id);
+		redirect('/main/products/');
+	}
+	// public function category($id)
+	// {
+	// 	$this->Product->get_category($id);
+	// 	redirect('/');
+	// }
 
 }
 
 //end of main controller
+
+
+
+
+

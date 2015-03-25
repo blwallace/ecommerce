@@ -16,6 +16,13 @@
      .total {
      	float: right;
      }
+     .status {
+     	background-color: lightgreen;
+     	border: 1px solid black;
+     	margin-top: -100px;
+     	text-align: center;
+     	font-size: 20px;
+     }
      #padding {
      	margin: 0px;
      }
@@ -24,6 +31,7 @@
      	height: 200px;
      	border: 1px solid silver;
      	box-shadow: 5px 5px 3px grey;
+     	overflow: auto;
      }
      	#orders td {
      		text-align: center;
@@ -73,7 +81,7 @@
 		<h2> Dojo E-Commerce </h2>
 		<a href="/main/orders/"><h5> Orders </h5></a>
 		<a href="/main/products/"><h6> Products </h6></a>
-		<a href="/main/index/"><h4> Log Off </h4></a>
+		<a href="/main/home/"><h4> Log Off </h4></a>
 	</div>
 
 <div class="container">
@@ -144,6 +152,10 @@
 	 		?><br>
 	 		<p class="total" id="padding"> $1.00 </p><br>
 	 		<p class="total" id="padding">$<?=array_sum($price)+1 ?></p>
+		</div>
+
+		<div class="status">
+			<p>Status: Shipped </p>
 		</div>
 	</div>
 
