@@ -13,7 +13,7 @@
 	    	margin: 20px auto;
 	    	margin-left: 10px;
 	    }
-	    	.category li a{
+	    	.category li a {
 	    		text-decoration: none !important;
 	    		color: black
 	    	}

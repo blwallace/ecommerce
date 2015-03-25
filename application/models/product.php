@@ -21,6 +21,7 @@ class Product extends CI_Model {
          return $this->db->query("SELECT * FROM products WHERE id = ?", array($id))->row_array();
      }
 
+
     function get_popular()
      {
      	$query= 'SELECT products.id as id, products.name as name, products.price as price, SUM(order_items.quantity) as quantity,products.productscol as productscol
@@ -35,6 +36,7 @@ class Product extends CI_Model {
 		return $this->db->query($query)->result_array();						
 
      }
+
 }
 
 /* End of file user.php */
