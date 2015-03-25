@@ -13,15 +13,31 @@ class Main extends CI_Controller {
 	public function index($start)
 	{
 
-		if(!$this->input->post('sort'))
+		if(!$this->input->post('sort') || $this->input->post('sort') == '_')
 			{	$sort = 'ORDER BY id ASC';}	
 		else
-			{	$sort = 'ORDER BY price ASC';}				
-		
-		if(!$this->input->post('search'))
-			{	$search = '%';}
-		else{$search = $this->input->post('search');
-			$search = "%" .$search."%";}
+			{	$sort = 'ORDER BY price ASC';}		
+				
+		if($this->input->post('search') == '' && $this->session->userdata('search') == '%')
+		{	
+			$search = '%';
+			$this->session->set_userdata(array('search'=>$search));
+		}
+		else if($this->input->post('search') == '' && !$this->input->post('sort'))
+		{	
+			$search = '%';
+			$this->session->set_userdata(array('search'=>$search));
+		}		
+		if($this->input->post('search'))
+		{
+			$search = $this->input->post('search');
+			$search = "%" .$search."%";
+			$this->session->set_userdata(array('search'=>$search));
+		}		
+		else
+		{
+			$search = $this->session->userdata('search');		
+		}
 
 		$all_products = $this->Product->get_all_filtered($search,$sort);
 		//count all items

@@ -101,6 +101,10 @@
      		float: right;
      		margin-right: 5%;
      	}
+     	.error
+     	{
+     		color:red;
+     	}
      </style>
 
 </head>
@@ -117,20 +121,25 @@
 <div class="container">
 	<div class="row">
 		<div class="three columns" id="left-box">
-		<p>		<?php 
-			if($this->session->userdata('first_name'))
-			{
-				echo "Welcome ".$this->session->userdata('first_name');
-				echo '<br><a href="/users/logout">Logout</a>';
-			}
-			else
-			{
-				echo '<a href="/main/login">Login</a>';
-			}
+		<p>	<?php 
+				echo '<h5 class="error">';
+				echo $this->session->flashdata('login_error');
+				echo $this->session->flashdata('registration_error');
+				echo '</h5>';
+
+				if($this->session->userdata('first_name'))
+				{
+					echo "Welcome ".$this->session->userdata('first_name');
+					echo '<br><a href="/users/logout">Logout</a>';
+				}
+				else
+				{
+					echo '<a href="/main/login">Login</a>';
+				}
 		 ?>	</p>
 
 		<form action="#" method="post" id="search">
-			<input class="seven columns"type="text" name="search" placeholder="Product Name">
+			<input class="seven columns"type="text" name="search" placeholder="Product Name" value = '<?= str_replace('%','',$this->session->userdata('search'))?>'>
 			<input class="one column" id="search-button"type="submit" value="" style="background:url(/assets/search.png) no-repeat;" />
 		</form>	
 			<ul class="category"> <h5>Categories</h5>
@@ -171,6 +180,7 @@
 					<form action='/' method='post' class="sort">
 					<input type='submit' value='Order By'>						
 					<select name='sort'>
+						<option value='_'></option>
 						<option value='price'>Price</option>
 						<option value='popular'>Most Popular</option>
 					</select>					
