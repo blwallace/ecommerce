@@ -10,6 +10,7 @@ class Product extends CI_Model {
      {
          return $this->db->query("SELECT * FROM products WHERE id = ?", array($id))->row_array();
      }
+     
 }
 
 /* End of file user.php */
