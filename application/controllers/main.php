@@ -9,11 +9,36 @@ class Main extends CI_Controller {
 		$this->load->model('Product');
 	}
 
-	public function index()
+	public function index($start)
 	{
+
+		if(!$this->input->post('sort'))
+			{	$sort = 'ORDER BY id ASC';}	
+		else
+			{	$sort = 'ORDER BY price ASC';}				
+		
+		if(!$this->input->post('search'))
+			{	$search = '%';}
+		else{$search = $this->input->post('search');
+			$search = "%" .$search."%";}
+
+		$all_products = $this->Product->get_all_filtered($search,$sort);
+		//count all items
+		if($this->input->post('sort') == 'popular')
+			{$all_products = $this->Product->get_popular();}	
+
+		$total = $this->product_counter($all_products);
+
+		$filtered_list = $this->product_index($all_products,$total,$start);
+		//set indexes
+		//put in array
+
 		$data = array(
-			'products' => $this->Product->get_all()
-		);
+			'products' => $filtered_list,
+			'start' =>$start,
+			'total' => $total
+		);		
+
 		$this->load->view('index',$data);
 	}
 	public function show_single($id)
@@ -28,6 +53,41 @@ class Main extends CI_Controller {
 	{
 		$this->load->view('login_dash');
 	}
+
+	public function product_counter($products)
+	{
+		$ticker = 0;
+		foreach($products as $item)
+		{
+			$ticker++;
+		}
+
+		return $ticker;
+	}
+
+	public function product_index($list,$total,$start)
+	{
+		if($total < 13)
+			{
+				return $list;
+			}
+
+			if($start + 12 > $total || $total < $start)
+			{
+				$start = $total - 12;
+			}
+
+		$arr = array();
+
+		for($i=$start;$i<$start + 12;$i++)
+		{
+			$arr[] = $list[$i];
+		}
+
+		return $arr;
+	}
+
+
 }
 
 //end of main controller

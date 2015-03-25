@@ -85,7 +85,7 @@
 			</table>
 				<div class="row" id="move-right">
 		<h5>Total: $<?= $total ?> </h5>
-		<button class="button-primary"> Contiune Shopping </button>
+		<a href="/main/index"><button class="button-primary"> Contiune Shopping </button></a>
 	</div>
 		</div>
 

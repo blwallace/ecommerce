@@ -107,17 +107,30 @@
 
 <body>
 
+
 	<div class="header" id="header">
 		<h2> Dojo E-Commerce </h2>
+
 		<h4> Shopping cart (xxx) </h4>
 	</div>
 
 <div class="container">
 	<div class="row">
 		<div class="three columns" id="left-box">
+		<p>		<?php 
+			if($this->session->userdata('first_name'))
+			{
+				echo "Welcome ".$this->session->userdata('first_name');
+				echo '<br><a href="/users/logout">Logout</a>';
+			}
+			else
+			{
+				echo '<a href="/main/login">Login</a>';
+			}
+		 ?>	</p>
 
 		<form action="#" method="post" id="search">
-			<input class="seven columns"type="text" name="search" value="product name..">
+			<input class="seven columns"type="text" name="search" placeholder="Product Name">
 			<input class="one column" id="search-button"type="submit" value="" style="background:url(/assets/search.png) no-repeat;" />
 		</form>	
 			<ul class="category"> <h5>Categories</h5>
@@ -146,43 +159,44 @@
 
 		<div class="nine columns" id="right-box">
 			<div class="row">
-				<h5> Products (page 1)</h5>
+				<h5> Products (page <?php echo ceil($start/12+1) ?>)</h5>
 				<ul class="nav">
-					<a href=""><li>first</li></a>
-					<a href=""><li>prev</li></a>
-					<a href=""><li>1</li></a>
-					<a href=""><li>next</li></a>
+					<?php if($total - $start > 24){ ?> <a href="/main/index/<?php echo $total - 12 ?>"><li>Last</li></a> <?php } ?>					
+					<?php if($total - $start > 12){ ?> <a href="/main/index/<?php echo $start + 12 ?>"><li>Next</li></a> <?php } ?>					
+					<?php if($start > 12){ ?> <a href="/main/index/<?php echo $start - 12 ?>"><li>Prev</li></a> <?php } ?>					
+					<?php if($start > 0){ ?> <a href="/main/index/0"><li>First</li></a> <?php } ?>
 				</ul>
 				</div>
 				<div class="row">
-					<h6 id="move-right">Sorted By</h6>
-				</div>
-				<div class="row">
-					<select class="sort">
-						<option>Price</option>
-						<option>Most Popular</option>
-					</select>
+					<form action='/' method='post' class="sort">
+					<input type='submit' value='Order By'>						
+					<select name='sort'>
+						<option value='price'>Price</option>
+						<option value='popular'>Most Popular</option>
+					</select>					
 				</div>
 				<div class="row">
 					<!-- these are products from the database -->
 				<?php 
+
 				foreach ($products as $product) {
-						echo'<a href="/main/show_single/'.$product['id'].'"><button class="product">'. $product['name']. '</button></a>';
+						echo'<a href="/main/show_single/'.$product['id'].'"><button type="button" class="product">'. $product['name']. '</button></a>';
 					}
 				?>
 						<div class="row" id="outside">
 							<ul class="numList">
-								<a class="text" href=""><li>1 | </li></a>
-								<a class="text" href=""><li>2 | </li></a>
-								<a class="text" href=""><li>3 | </li></a>
-								<a class="text" href=""><li>4 | </li></a>
-								<a class="text" href=""><li>5 | </li></a> 
-								<a class="text" href=""><li>6 | </li></a>
-								<a class="text" href=""><li>7 | </li></a>
-								<a class="text" href=""><li>8 | </li></a>
-								<a class="text" href=""><li>9 | </li></a>
-								<a class="text" href=""><li>10 | </li></a> 
-								<a class="text" href=""><li> -> </li></a> 
+<?php 	
+								$ticker = 0;
+								$temp = $total;
+
+								while($temp > 0 && $ticker < 10 && $total > 11)
+									{echo '<a class="text" href="/main/index/' . ($ticker * 12 ) .'"><li> '.($ticker+1).'</li></a>';
+										$temp-=12;
+										$ticker++;}
+								if($ticker > 10)
+									{echo '<a class="text" href="/main/index/' . ($total- 12) .'"><li> Last</li></a>';	}
+								 ?>								
+
 							</ul>
 						</div>
 				</div>

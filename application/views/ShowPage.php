@@ -78,7 +78,7 @@
 	</div>
 <div class="container">
 	<div class="row">
-		<a href="/main/index/"><button class="button-primary"> Go Back </button></a>
+		<a href="/"><button class="button-primary"> Go Back </button></a>
 		<h4><?= $product['name']; ?></h4>
 	</div>
 	<div class="row">
