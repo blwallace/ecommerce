@@ -13,9 +13,9 @@ class Main extends CI_Controller {
 	{
 		redirect('/');
 	}
+	
 	public function index($start)
 	{
-
 		if(!$this->input->post('sort') || $this->input->post('sort') == '_')
 			{	$sort = 'ORDER BY id ASC';}	
 		else
@@ -41,26 +41,21 @@ class Main extends CI_Controller {
 		{
 			$search = $this->session->userdata('search');		
 		}
-
 		$all_products = $this->Product->get_all_filtered($search,$sort);
 		//count all items
 		if($this->input->post('sort') == 'popular')
 			{$all_products = $this->Product->get_popular();}	
-
 		$total = $this->product_counter($all_products);
-
 		$filtered_list = $this->product_index($all_products,$total,$start);
 		//set indexes
 		//put in array
-
 		$data = array(
 			'products' => $filtered_list,
 			'start' =>$start,
 			'total' => $total
 		);		
-
 		$this->load->view('index',$data);
-	}
+	}	
 	public function show_single($id)
 	{
 		$data = array(

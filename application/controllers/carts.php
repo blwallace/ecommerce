@@ -93,6 +93,11 @@ class Carts extends CI_Controller {
 		$this->cart->create_cart();
 	}
 
+	public function add_image()
+	{
+		
+	}
+
 
 
 }

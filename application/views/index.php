@@ -118,8 +118,7 @@
 	</div>
 
 <div class="container">
-	<div class="row">
-		<div class="three columns" id="left-box">
+	<div class="three columns" id="left-box">
 		<p>	<?php 
 				echo '<h5 class="error">';
 				echo $this->session->flashdata('login_error');
@@ -162,9 +161,9 @@
 					echo '<li> Lacrosse ('.$sum.')</li>';	
 				?>
 			</ul>
-		</div>
-
-		<div class="nine columns" id="right-box">
+	</div>
+	
+	<div class="nine columns" id="right-box">
 			<div class="row">
 				<h5> Products (page <?php echo ceil($start/12+1) ?>)</h5>
 				<ul class="nav">
@@ -173,8 +172,8 @@
 					<?php if($start > 12){ ?> <a href="/main/index/<?php echo $start - 12 ?>"><li>Prev</li></a> <?php } ?>					
 					<?php if($start > 0){ ?> <a href="/main/index/0"><li>First</li></a> <?php } ?>
 				</ul>
-				</div>
-				<div class="row">
+			</div>
+			<div class="row">
 					<form action='/' method='post' class="sort">
 					<input type='submit' value='Order By'>						
 					<select name='sort'>
@@ -182,21 +181,31 @@
 						<option value='price'>Price</option>
 						<option value='popular'>Most Popular</option>
 					</select>					
-				</div>
-				<div class="row">
-					<!-- these are products from the database -->
-				<?php 
-
+			</div>
+			<div class="row"><!-- these are products from the database -->
+<?php 
 				foreach ($products as $product) {
 						echo'<a href="/main/show_single/'.$product['id'].'"><button type="button" class="product">'. $product['name']. '</button></a>';
-					}
-				?>
-						<div class="row" id="outside">
-							<ul class="numList">
-				
-						</div>
-				</div>
-		</div>
+					}?>
+
+			</div>
+			<div class="row" id="outside">
+				<ul class="numList">
+<?php 	
+					$ticker = 0;
+					$temp = $total;
+					while($temp > 0 && $ticker < 10 && $total > 11)
+						{echo '<a class="text" href="/main/index/' . ($ticker * 12 ) .'"><li> '.($ticker+1).'</li></a>';
+							$temp-=12;
+							$ticker++;}
+					if($ticker > 10)
+						{echo '<a class="text" href="/main/index/' . ($total- 12) .'"><li> Last</li></a>';	}
+					 ?>								
+
+				</ul>
+			</div>
+	</div>
+</div>
 
 
 
