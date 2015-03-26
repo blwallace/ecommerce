@@ -65,6 +65,10 @@
     	border: 1px solid black;
     	display: inline-block;
     }
+    img{
+        max-width:100%;
+        max-height:100%;
+    }
     </style>
 
 </head>
@@ -86,24 +90,15 @@
 			<div class="image">
 
 
-            <?php echo form_open_multipart('upload/do_upload');?>
-
-            <input type="file" name="userfile" size="20" />
-
-            <br /><br />
-
-            <input type="submit" value="upload" />
-
-        </form>
-
+           <?php echo '<img src="/assets/images/'.$product['id'].'_01.jpeg" class="product">' ?>
 
 			</div>
 			<div class="small-box">
-				<div id="small-box">1</div>
-				<div id="small-box">2</div>
-				<div id="small-box">3</div>
-				<div id="small-box">4</div>
-				<div id="small-box">5</div>
+				<div id="small-box"><?php echo '<img src="/assets/images/'.$product['id'].'_02.jpeg" class="product">' ?></div>
+				<div id="small-box"><?php echo '<img src="/assets/images/'.$product['id'].'_03.jpeg" class="product">' ?></div>
+				<div id="small-box"><?php echo '<img src="/assets/images/'.$product['id'].'_04.jpeg" class="product">' ?></div>
+				<div id="small-box"><?php echo '<img src="/assets/images/'.$product['id'].'_05.jpeg" class="product">' ?></div>
+				<div id="small-box"><?php echo '<img src="/assets/images/'.$product['id'].'_06.jpeg" class="product">' ?></div>
 			</div>
 		</div>
 		<div class="eight columns" id="grey">

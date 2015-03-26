@@ -42,6 +42,7 @@
      		border: 1px solid black;
      		margin-left: 10px;
      		text-align: center;
+     		position:relative;
      	}
 	     	.product:hover {
 	     		background-color: lightgrey;
@@ -56,6 +57,14 @@
      		bottom: 0px;
      		
      	}
+		  .center {
+		    position: absolute;
+		    bottom: 0;
+		    left: 0.5em;
+		    width: 400px;
+		    font-weight: bold;
+		    color: #fff;
+		  }     	
      		.numList li {
 	     		display: inline;
 	     		text-align: center;
@@ -105,6 +114,18 @@
      	{
      		color:red;
      	}
+     	.product-click{
+     		display: inline-block;
+     	}
+     	.product-text{
+     		position: relative; 
+     		text-align: center;
+     		text-decoration: none;
+     	}
+		a{
+			text-decoration: none;
+		}     	
+
      </style>
 
 </head>
@@ -185,7 +206,7 @@
 			<div class="row"><!-- these are products from the database -->
 <?php 
 				foreach ($products as $product) {
-						echo'<a href="/main/show_single/'.$product['id'].'"><button type="button" class="product">'. $product['name']. '</button></a>';
+						echo'<div class="product-click"><a href="/main/show_single/'.$product['id'].'"><img src="/assets/images/'.$product['id'].'_01.jpeg" class="product"><div class="product-text">'. $product['name']. '</div></a></div>';
 					}?>
 
 			</div>
