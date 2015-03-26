@@ -22,7 +22,7 @@ class Dashboard extends CI_Model {
 	}
 	function show_single_order()
 	{
-		$query = "SELECT order_items.order_id, order_items.quantity, products.id, products.price, products.name, products.price * SUM(order_items.quantity) as totalAmt
+		$query = "SELECT orders.id, order_items.order_id, order_items.quantity, orders.status, products.id, products.price, products.name, products.price * SUM(order_items.quantity) as totalAmt
 				FROM order_items,orders,products 
 				WHERE order_items.product_id = products.id
 				AND order_items.order_id = orders.id

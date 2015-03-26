@@ -1,11 +1,11 @@
-<?php 
-	foreach ($orders as $order) {
-			// echo date_format($order['updated_at'], 'Y/m/d');
-
-	}
 
 
- ?>
+
+
+
+
+
+
 <html>
 <head>
 	<title>Dashboard Orders</title>
@@ -110,7 +110,7 @@
 					<td><?php $date=date_create($order['updated_at']); echo date_format($date, 'm/d/Y'); ?></td>
 					<td><?= $order['billing_address'] ?></td>
 					<td>
-						<!-- total -->
+						<!-- total, number format forces only 2 decimal points -->
 						<?php
 						foreach ($total as $num) {
 							if($order['id'] == $num['order_id']){
@@ -120,14 +120,24 @@
 						?>
 					</td>
 					<td>
-					<select>
-						<option>Shipped</option>
-						<option>Order in process</option>
-						<option>Cancelled</option>
-					</select>
+					<?php  
+							if($order['status'] == 1) {
+								$order['status'] = "Shipped";
+							} elseif($order['status'] == 2) {
+								$order['status'] = "Order In Process";
+							} elseif($order['status'] == 3) {
+								$order['status'] = "Cancelled";
+							}
+					?>
+						<select>
+							<option><?= $order['status']?></option>
+							<option>Shipped</option>
+							<option>Order in process</option>
+							<option>Cancelled</option>
+						</select>
 					</td>
 				</tr>
-			<?php } ?>
+	<?php } ?>
 			</tbody>
 		</table>
 

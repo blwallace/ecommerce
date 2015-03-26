@@ -193,7 +193,7 @@
 				?>
 						<div class="row" id="outside">
 							<ul class="numList">
-				<?php } ?>
+				
 						</div>
 				</div>
 		</div>

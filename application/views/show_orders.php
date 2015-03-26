@@ -1,6 +1,6 @@
-
 <?php 
 	// var_dump($billing);
+	// die();
  ?>
 
 <html>
@@ -21,7 +21,7 @@
      	border: 1px solid black;
      	margin-top: -100px;
      	text-align: center;
-     	font-size: 20px;
+     	font-size: 15px;
      }
      #padding {
      	margin: 0px;
@@ -155,10 +155,18 @@
 		</div>
 
 		<div class="status">
-			<p>Status: Shipped </p>
+		<?php  
+				if($billing['status'] == 1) {
+					$billing['status'] = "Shipped";
+				} elseif($billing['status'] == 2) {
+					$billing['status'] = "Order In Process";
+				} elseif($billing['status'] == 3) {
+					$billing['status'] = "Cancelled";
+				}
+		?>
+			<h6>Status: <?=$billing['status']?></h6>
 		</div>
 	</div>
-
 </div>
 
 
